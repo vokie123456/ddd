@@ -12,8 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    $data = ['name'=>'wuyutao', 'age'=>18];
+    return view('test', $data);
 });
+
+Route::get('login', 'TestController@login');
 
 // // 访问首页用匿名函数去响应，同样的路由以最后一个来响应
 // Route::get('/', function () {
