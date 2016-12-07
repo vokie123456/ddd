@@ -26,6 +26,10 @@ Route::get('msg/del/{id}', 'MsgController@del'); //删
 Route::get('msg/index', 'MsgController@index'); //查
 Route::match(['get', 'post'], 'msg/up/{id}', 'MsgController@up'); //改
 
+// 模版操作
+Route::get('test', 'TestController@test');
+Route::get('test1', 'TestController@test1');
+
 
 
 
