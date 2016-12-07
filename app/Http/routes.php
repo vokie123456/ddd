@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('add', 'TestController@add');
+Route::get('up', 'TestController@up');
+Route::get('del', 'TestController@del');
+Route::get('show', 'TestController@show');
+
 
 
 
