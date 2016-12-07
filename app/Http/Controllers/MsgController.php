@@ -68,42 +68,7 @@ class MsgController extends Controller
         }
     }
 
-    //查
-    public function index() {
-        $msg = Msg::where('id',1);
-        // $msg = Msg::all();
-        // $msg = Msg::orderBy('id', 'desc')->get(); //倒序
-        // $msg = Msg::where('id','>',1)->skip(1)->take(1)->get();
-        return view('msg.index', ['msg'=>$msg]);
-    }
-
-    //查
-    public function test() {
-        // $msg = Msg::find(3);
-        // $msg = Msg::where('id','=',1)->first();
-        // $msg = Msg::all(['title', 'content']);
-        // $msg = Msg::where('id', '>', 1)->get(['title', 'content']);
-        $msg = Msg::where('id','=',1)->select('title')->get();
-
-        echo '<pre>';
-        print_r($msg);
-    }
-
-    public function up(Request $req, $id) {
-        if (empty($_POST)) {
-            $msg = Msg::find($id);
-            return view('msg.up', ['row'=>$msg]);
-        } else {
-            // dd($req);
-            $msg = Msg::find($id);
-            $msg->title = $req->input('title');
-            $msg->content = $req->content;
-            $msg->age = $req->input('age', 11); //有自动填充作用
-            $rs = $msg->save();
-            return $rs ? 'ok' : 'fail';
-        }
-    }
-
+    // 删除
     public function del($id) {
         $msg = Msg::where('id',$id)->delete();
         if ($msg) { 
@@ -111,10 +76,31 @@ class MsgController extends Controller
         } else {
             echo 'fail';
         }
+    }    
+
+    // 查寻
+    public function index() {
+        // $msg = Msg::where('id','>',2)->orderBy('id','asc')->get();
+        // $msg = Msg::where('id', '>', 1)->get();
+        $msg = Msg::orderBy('id','asc')->get();
+        // $msg = Msg::orderBy('id', 'desc')->get(); //倒序
+        // $msg = Msg::where('id','>',1)->skip(1)->take(1)->get();
+        return view('msg.index', ['msg'=>$msg]);
     }
 
-    public function show(Request $req) {
-        dd($req);
+    // 修改
+    public function up(Request $req, $id) {
+        if (empty($_POST)) {
+            $msg = Msg::find($id);
+            return view('msg.up', ['row'=>$msg]);
+        } else {
+            $msg = Msg::find($id);
+            $msg->title = $req->input('title');
+            $msg->content = $req->content;
+            $msg->age = $req->input('age', 11); //有自动填充作用
+            $rs = $msg->save();
+            return $rs ? 'ok' : 'fail';
+        }
     }
 }
 

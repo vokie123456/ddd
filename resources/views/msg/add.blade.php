@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>laravel添加留言</h1>
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 		<p>
 			标题：<input type="text" name="title">
 		</p>
@@ -14,7 +14,7 @@
 			内容：<textarea name="content" id="" cols="30" rows="10"></textarea>
 		</p>
 		<input type="submit" name="提交">
-		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+		{!!csrf_field()!!}
 	</form>
 </body>
 </html>
