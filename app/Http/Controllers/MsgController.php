@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use DB;
 use App\Msg;
-use App\Test;
 
 class MsgController extends Controller
 {
@@ -96,10 +93,10 @@ class MsgController extends Controller
         } else {
             $msg = Msg::find($id);
             $msg->title = $req->input('title');
-            $msg->content = $req->content;
+            $msg->content = $req->input('content');
             $msg->age = $req->input('age', 11); //有自动填充作用
             $rs = $msg->save();
-            return $rs ? 'ok' : 'fail';
+            return redirect('msg/index');
         }
     }
 }
