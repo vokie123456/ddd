@@ -278,6 +278,7 @@ class ComposerStaticInit3b19449b6617331064b14b10e38d9f68
     );
 
     public static $classMap = array (
+        'AddColumnA1Msgs' => __DIR__ . '/../..' . '/database/migrations/2016_12_07_055106_add_column_a1_msgs.php',
         'AddColumnAgeMsgs' => __DIR__ . '/../..' . '/database/migrations/2016_12_07_013951_add_column_age_msgs.php',
         'CreateMsgsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_07_012254_create_msgs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
