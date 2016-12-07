@@ -20,7 +20,11 @@ Route::get('up', 'TestController@up');
 Route::get('del', 'TestController@del');
 Route::get('show', 'TestController@show');
 
-
+// 留言路由
+Route::match(['get', 'post'], 'msg/add', 'MsgController@add'); //增
+Route::get('msg/del/{id}', 'MsgController@del'); //删
+Route::get('msg/index', 'MsgController@index'); //查
+Route::match(['get', 'post'], 'msg/up/{id}', 'MsgController@up'); //改
 
 
 
