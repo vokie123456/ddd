@@ -55,13 +55,14 @@ class MsgController extends Controller
     // 添加
     public function add(Request $req) {
         if (empty($_POST)) {
-            return view('msg.add');   
+            return view('msg.add');
         } else {
             $msg = new Msg();
             $msg->title = $_POST['title'];
             $msg->content = $_POST['content'];
             $rs = $msg->save();
-            return $rs ? 'ok' : 'fail';
+            //return redirect('msg/index');
+            echo 'ok';
         }
     }
 
